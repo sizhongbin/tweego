@@ -1,17 +1,17 @@
-name: Sync Fork
+name: Fork Sync
 
 on:
+  push:
   schedule:
     - cron: '0 0 * * *' # every 0:00
-  workflow_dispatch: # on button click
 
 jobs:
   sync:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: tgymnich/fork-sync@v1.8
-        with:
-          base: master
-          head: master
+    - uses: tgymnich/fork-sync@v2.0.10 
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        owner: tmedwards
+        base: master
+        head: master
